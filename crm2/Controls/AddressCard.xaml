@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="crm2.Controls.AddressCard"
+             x:Name="this"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Controls="clr-namespace:crm2.Controls"
+             xmlns:converters="clr-namespace:crm2.Converters"
+             mc:Ignorable="d" 
+             >
+    <UserControl.Resources>
+        <converters:CollapseIfFalseConverter x:Key="CollapseIfFalseConverter"/>
+        <converters:CollapseIfTrueConverter x:Key="CollapseIfTrueConverter"/>
+    </UserControl.Resources>
+    <Border BorderThickness="2" BorderBrush="Black" CornerRadius="5,5,5,5" Background="White" Margin="2,2,2,2">
+        <StackPanel Orientation="Vertical">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Controls:LabeledTextBlock Grid.Column="0" Header="Street" Text="{Binding ElementName=this, Path=Addres.Street, Mode=TwoWay}" EditMode="{Binding ElementName=this, Path=EditMode}"/>
+                <Controls:LabeledTextBlock Grid.Column="1" Header="Building" Text="{Binding ElementName=this, Path=Addres.BuildingNumber, Mode=TwoWay}" EditMode="{Binding ElementName=this, Path=EditMode}"/>
+                <Controls:LabeledTextBlock Grid.Column="2" Header="Apartment" Text="{Binding ElementName=this, Path=Addres.ApartmentNumber, Mode=TwoWay}" EditMode="{Binding ElementName=this, Path=EditMode}"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Controls:LabeledTextBlock Grid.Column="0" Header="City" Text="{Binding ElementName=this, Path=Addres.City, Mode=TwoWay}" EditMode="{Binding ElementName=this, Path=EditMode}" HorizontalAlignment="Stretch"/>
+                <Controls:LabeledTextBlock Grid.Column="1" Header="Country" Text="{Binding ElementName=this, Path=Addres.Country, Mode=TwoWay}" EditMode="{Binding ElementName=this, Path=EditMode}" HorizontalAlignment="Stretch"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Controls:LabeledTextBlock Grid.Column="0" Header="PostalCode" Text="{Binding ElementName=this, Path=Addres.PostalCode, Mode=TwoWay}" EditMode="{Binding ElementName=this, Path=EditMode}" HorizontalAlignment="Stretch"/>
+                <Controls:LabeledTextBlock Grid.Column="1" Header="PostOffice" Text="{Binding ElementName=this, Path=Addres.PostOffice, Mode=TwoWay}" EditMode="{Binding ElementName=this, Path=EditMode}" HorizontalAlignment="Stretch"/>
+            </Grid>
+            <Controls:LabeledTextBlock Header="Province" Text="{Binding ElementName=this, Path=Addres.Province, Mode=TwoWay}" Visibility="{Binding ElementName=this, Path=DetailsVisible}" EditMode="{Binding ElementName=this, Path=EditMode}"/>
+            <Controls:LabeledTextBlock Header="District" Text="{Binding ElementName=this, Path=Addres.District, Mode=TwoWay}" Visibility="{Binding ElementName=this, Path=DetailsVisible}" EditMode="{Binding ElementName=this, Path=EditMode}"/>
+            <Controls:LabeledTextBlock Header="Commune" Text="{Binding ElementName=this, Path=Addres.Commune, Mode=TwoWay}" Visibility="{Binding ElementName=this, Path=DetailsVisible}" EditMode="{Binding ElementName=this, Path=EditMode}"/>
+            <UniformGrid Rows="1">
+                <Button x:Name="DetailsButton" Content="Details" Click="DeatilsClick"/>
+                <Button x:Name="EditButon" Content="Edit" Click="EditButtonClick" Visibility="{Binding ElementName=this, Path=EditMode, Converter={StaticResource CollapseIfTrueConverter}}"/>
+                <Button x:Name="SaveButton" Content="Save" Click="SaveButtonClick" Visibility="{Binding ElementName=this, Path=EditMode, Converter={StaticResource CollapseIfFalseConverter}}"/>
+                <Button x:Name="CancelButton" Content="Cancel" Click="CancelButtonClick" Visibility="{Binding ElementName=this, Path=EditMode, Converter={StaticResource CollapseIfFalseConverter}}"/>
+            </UniformGrid>
+        </StackPanel>
+    </Border>
+
+</UserControl>

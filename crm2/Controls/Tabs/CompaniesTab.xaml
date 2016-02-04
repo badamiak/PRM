@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="crm2.Controls.Tabs.CompaniesTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:controls ="clr-namespace:crm2.Controls"
+             xmlns:tabs ="clr-namespace:crm2.Controls.Tabs"
+             x:Name="this"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <Image Source="/crm2;component/rsc/img/add42.png" StretchDirection="DownOnly" x:Key="AddImage"/>
+        <Image Source="/crm2;component/rsc/img/delete27.png" StretchDirection="DownOnly" x:Key="DelImage"/>
+    </UserControl.Resources>
+    <StackPanel>
+        <Menu>
+            <MenuItem Header="Add" Icon="{StaticResource AddImage}" Click="AddCompanyClick"/>
+            <MenuItem Header="Delete" Icon="{StaticResource DelImage}" Click="DelCompanyClick"/>
+        </Menu>
+
+        <controls:CompanyCard SourceCompany="{Binding ElementName=this, Path=SelectedCompany}"/>
+        <DataGrid x:Name="companiesGrid" IsReadOnly= "True" ItemsSource="{Binding ElementName=this, Path=Companies}" SelectionChanged="GridSelectionChanged">
+
+        </DataGrid>
+    </StackPanel>
+</UserControl>

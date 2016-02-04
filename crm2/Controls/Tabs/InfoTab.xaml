@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="crm2.Controls.Tabs.InfoTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             Background="White"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type TextBlock}" x:Key="RightAllignedBold">
+            <Setter Property="TextAlignment" Value="Right"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="24px"/>
+        </Style>
+        <Style TargetType="{x:Type TextBlock}" x:Key="LeftAlligned">
+            <Setter Property="TextAlignment" Value="Left"/>
+            <Setter Property="FontSize" Value="24px"/>
+        </Style>
+    </UserControl.Resources>
+    
+
+    <StackPanel Orientation="Vertical">
+        <TextBlock Text="Politechnika Poznańska" TextAlignment="Center" FontWeight="Bold" FontSize="24px"/>
+        <TextBlock Text="Instytut Automatyki i Inżynierii Informatycznej" TextAlignment="Center" FontWeight="Bold" FontSize="24px"/>
+        <TextBlock Text="Program przygotowano w ramach pracy dyplomowej inżynierskiej oddanej w kwietniu 2015 roku" TextAlignment="Center" FontWeight="Bold" FontSize="24px"/>
+        <UniformGrid Rows="5" Columns="2">
+        <TextBlock Text="Tytuł pracy:" Style="{StaticResource RightAllignedBold}"/>
+            <TextBlock Text=" Zarządzanie współpracą partnerską w systemie CRM" TextAlignment="Left" Style="{StaticResource LeftAlligned}"/>
+            <TextBlock Text="Title:" Style="{StaticResource RightAllignedBold}"/>
+            <TextBlock Text=" Partnership cooperation management in a CRM system" Style="{StaticResource LeftAlligned}"/>
+            <TextBlock Text="Promotor:" Style="{StaticResource RightAllignedBold}"/>
+            <TextBlock Text=" dr hab. Tadeusz Pankowski, prof. nadzw." Style="{StaticResource LeftAlligned}"/>
+            <TextBlock Text="Autor:" Style="{StaticResource RightAllignedBold}"/>
+            <TextBlock Text=" Bartosz Adamiak" Style="{StaticResource LeftAlligned}"/>
+            <TextBlock Text="Numer albumu:" Style="{StaticResource RightAllignedBold}"/>
+            <TextBlock Text=" 101917" Style="{StaticResource LeftAlligned}"/>
+        </UniformGrid>
+        <Image Source="/crm2;component/rsc/img/putLogoFull.png" Stretch="None"/>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,27 @@
+﻿Problemy:
+	P:modyfikacja danych w gui
+	R:zmiana text block na textbox, wyszło szybko dzięki przygotowaniu wcześniej kontrolki LabeledTextBox, wystarczyła podmiana w tym miejscu
+
+	P:NHibernate uruchamia swój wątek i zmienia zawartość kolekcji co gryzie się z GUI
+	R1:Obiekty proxy + łańcuch dziedziczenia, dzięki czemu do wątku gui
+		nie będzie przekazywany event collection changed powodujący błąd modyfikacji kolekcji spoza wątku GUI.
+		Ze względu na referencję proxy nie działa.
+	R2:klonowanie wszystkich obiektów, spowoduje to podwojenie wykorzystywanej pamięci.
+		Jeżeli będzie działać, należy rozpatrywać to jako dług techniczny, nietestowane.
+	R3:Przepięcie źródła bindingu
+		private void AddAddressButtonClick(object sender, RoutedEventArgs e)
+        {
+            var newAddress = new Address();
+            ContactData.AddAddress(newAddress);
+            RebindContact();
+        }
+        private void RebindContact()
+        {
+            var temp = ContactData;
+            ContactData = null;
+            ContactData = temp;
+        }
+
+	P: Kontrolka PeopleTab nie wyświetlała aktualnie zaznaczonego na liście kontaktu
+	R: SelectedPerson nie był ustawiony na dostęp publiczny
+

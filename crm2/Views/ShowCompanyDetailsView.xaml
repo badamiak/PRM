@@ -1,0 +1,13 @@
+﻿<Window x:Class="crm2.Views.ShowCompanyDetailsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:crm2.Controls"
+        Title="ShowCompanyDetailsView"
+        x:Name="showCompanyDetailsView"
+        MinWidth="800"
+        
+        WindowStyle="ToolWindow"
+        WindowState="Normal"
+        Topmost="True">
+    <controls:CompanyCard SourceCompany="{Binding ElementName=showCompanyDetailsView, Path=SelectedCompany}"/>
+</Window>
